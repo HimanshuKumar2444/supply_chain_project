@@ -23,6 +23,9 @@ public class ProcureCompanyRegistrationService {
     @Autowired
     private CompanyService companyService;
 
+    @Autowired
+    private  EmailService emailService;
+
 
 
     public ProcurementCompany procurementCompanyRegistration(ProcurementCompanyRegistrationDTO procurementCompanyRegistrationDTO){
@@ -38,8 +41,11 @@ public class ProcureCompanyRegistrationService {
 
 //         4. Create Admin Role For This Company After creating Admin Role We have to create
 //            Admin user of the company ...
+//         5  After registration of company then user should get mail..
 
-       companyService.createAdminForcompany(procurementCompany);
+       Employee adminEmploye = companyService.createAdminForcompany(procurementCompany);
+
+       emailService.sendRegistrationToProcurementCompany(procurementCompany,adminEmploye);
 
         return procurementCompany;
 

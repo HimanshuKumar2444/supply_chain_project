@@ -19,7 +19,7 @@ public class CompanyService {
     @Autowired
     private EmployeeService employeeService;
     //    work of this function is create admin user for the company.
-    public User createAdminForcompany(Company company){
+    public Employee createAdminForcompany(Company company){
 
 //        before creating admin user we should create admin for the role for the company..
 //        creation of admin role -> common for all the project lets keep it common points.
